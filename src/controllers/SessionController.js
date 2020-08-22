@@ -14,6 +14,6 @@ module.exports = {
             return response.status(400).json({ error: "Não foi encontrado nenhum usuario com o email" });
         }
 
-        return response.json(user);
+        return response.status(200).json(user);
     }
 };
