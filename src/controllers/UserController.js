@@ -11,12 +11,15 @@ module.exports = {
     async create(req, res){
         const {name, email, password, classe} = req.body;
 
-        await connection('users').insert({
+        const newUser = await connection('users').insert({
             name,
             email,
             password,
             classe,
         }) 
-        return res.json({ email });
+        if(!newUser){
+            return response.status(400).json({ error: "Não foi possível cadastrar" });
+        }
+        return res.status(200).json({ email });
     }
 };
