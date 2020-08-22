@@ -5,7 +5,7 @@ module.exports = {
     async index(req, res) {
         const users = await connection('users').select('*');
     
-        return res.json(users);
+        return res.status(200).json(users);
     },
 
     async create(req, res){
